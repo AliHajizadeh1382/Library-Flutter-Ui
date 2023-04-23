@@ -4,18 +4,37 @@ import 'package:librari/src/my_colors.dart';
 import 'package:librari/src/my_strings.dart';
 
 import '../model/fake_data.dart';
-import 'explore_page.dart';
-import 'library_page.dart';
+import 'cart_screen.dart';
+import 'main_screen/explore_page.dart';
+import 'main_screen/library_page.dart';
 
-class MyLisbraryPage extends StatelessWidget {
+final GlobalKey<ScaffoldState> _key = GlobalKey();
+
+class MyLisbraryPage extends StatefulWidget {
+  @override
+  State<MyLisbraryPage> createState() => _MyLisbraryPageState();
+}
+
+class _MyLisbraryPageState extends State<MyLisbraryPage> {
+  int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var textThme = Theme.of(context).textTheme;
+
+    List<Widget> pages = [
+      LibararyPage(textThme: textThme, size: size),
+      ExplorePage(),
+    ];
     return SafeArea(
         child: Scaffold(
+            key: _key,
             backgroundColor: SloidColors.primaryColor,
+            drawer: const Drawer(
+              child: ListTile(),
+            ),
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: SloidColors.primaryColor,
               elevation: 0,
               title: Padding(
@@ -23,9 +42,14 @@ class MyLisbraryPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Icon(
-                      CupertinoIcons.line_horizontal_3_decrease,
-                      color: Colors.black,
+                    InkWell(
+                      onTap: () {
+                        _key.currentState!.openDrawer();
+                      },
+                      child: const Icon(
+                        CupertinoIcons.line_horizontal_3_decrease,
+                        color: Colors.black,
+                      ),
                     ),
                     //Serch
                     Container(
@@ -61,9 +85,7 @@ class MyLisbraryPage extends StatelessWidget {
                 ),
               ),
             ),
-            body:
-                // ExplorePage(),
-                LibararyPage(textThme: textThme, size: size),
+            body: pages[pageIndex],
             bottomNavigationBar: Container(
               height: size.height / 11,
               decoration: BoxDecoration(
@@ -85,9 +107,19 @@ class MyLisbraryPage extends StatelessWidget {
                     Column(
                       children: [
                         IconButton(
-                            onPressed: () {},
-                            icon: const ImageIcon(
-                              AssetImage('assets/icons/icon.png'),
+                            onPressed: () {
+                              pageIndex = 0;
+                              print(pageIndex);
+                              setState(() {});
+                            },
+                            icon: ImageIcon(
+                              const AssetImage(
+                                'assets/icons/icon.png',
+                              ),
+                              color: pageIndex == 0
+                                  ? SloidColors
+                                      .bottomNavigationBarSelectedIconColor
+                                  : SloidColors.iconSerchColor,
                             )),
                         Text(
                           'My Library',
@@ -98,9 +130,18 @@ class MyLisbraryPage extends StatelessWidget {
                     Column(
                       children: [
                         IconButton(
-                            onPressed: () {},
-                            icon: const ImageIcon(
-                                AssetImage('assets/icons/icon4.png'))),
+                            onPressed: () {
+                              pageIndex = 1;
+                              print(pageIndex);
+                              setState(() {});
+                            },
+                            icon: ImageIcon(
+                              const AssetImage('assets/icons/icon4.png'),
+                              color: pageIndex == 1
+                                  ? SloidColors
+                                      .bottomNavigationBarSelectedIconColor
+                                  : SloidColors.iconSerchColor,
+                            )),
                         Text(
                           'Explore',
                           style: textThme.caption,

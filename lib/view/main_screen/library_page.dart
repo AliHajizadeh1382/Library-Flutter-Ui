@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../model/fake_data.dart';
-import '../src/my_colors.dart';
-import '../src/my_strings.dart';
+import '../../model/fake_data.dart';
+import '../../src/my_colors.dart';
+import '../../src/my_strings.dart';
 
 class LibararyPage extends StatelessWidget {
   const LibararyPage({
@@ -70,7 +70,7 @@ class LibararyPage extends StatelessWidget {
                                           ),
                                           fit: BoxFit.cover),
                                       color: Colors.amber,
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(16))),
                                 ),
 
@@ -127,19 +127,23 @@ class LibararyPage extends StatelessWidget {
                         MyString.titleList2,
                         style: textThme.headline3,
                       ),
-                      Container(
-                        width: size.width / 5,
-                        height: 20,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: SloidColors.captionColor),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(8),
-                            )),
-                        child: Center(
-                            child: Text(
-                          'See More',
-                          style: textThme.headline4,
-                        )),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          width: size.width / 5,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: SloidColors.captionColor),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(8),
+                              )),
+                          child: Center(
+                              child: Text(
+                            'See More',
+                            style: textThme.headline4,
+                          )),
+                        ),
                       )
                     ],
                   ),

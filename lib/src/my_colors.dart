@@ -9,7 +9,7 @@ class SloidColors {
   static const Color captionColor = Color.fromARGB(255, 151, 151, 151);
   static const Color bottomNavigationBarIconColor = Color.fromARGB(25, 0, 0, 0);
   static const Color bottomNavigationBarSelectedIconColor =
-      Color.fromARGB(255, 228, 148, 49);
+      Color.fromARGB(255, 255, 140, 0);
   static const Color bottomNavigationBarSelectedTextColor =
       Color.fromARGB(255, 22, 92, 115);
 }

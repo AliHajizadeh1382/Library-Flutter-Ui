@@ -31,3 +31,23 @@ class ListBookGrid {
     ListBookGrid(image: 'assets/image/b2.png', title: 'Name of Book', strar: 0),
   ];
 }
+
+class TitleListExplorePgae {
+  String? title;
+
+  TitleListExplorePgae({required this.title});
+  static List<TitleListExplorePgae> titleExplore = [
+
+    TitleListExplorePgae(title: 'Arts'),
+    TitleListExplorePgae(title: 'Bigraphy'),
+    TitleListExplorePgae(title: 'Romance'),
+    TitleListExplorePgae(title: 'Thriller'),
+    TitleListExplorePgae(title: 'Fiction'),
+    TitleListExplorePgae(title: 'Arts'),TitleListExplorePgae(title: 'Arts'),
+    TitleListExplorePgae(title: 'Bigraphy'),
+    TitleListExplorePgae(title: 'Romance'),
+    TitleListExplorePgae(title: 'Thriller'),
+    TitleListExplorePgae(title: 'Fiction'),
+    TitleListExplorePgae(title: 'Arts'),
+  ];
+}
